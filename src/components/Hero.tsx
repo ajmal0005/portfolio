@@ -155,18 +155,24 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
           style={{ position: 'relative', flexShrink: 0, display: 'flex', justifyContent: 'center' }}
         >
-          {/* Lavender brush spread effect behind */}
+          {/* Lavender brush stroke background */}
           <div style={{
             position: 'absolute',
-            top: '10%',
-            left: '10%',
-            right: '10%',
-            bottom: '10%',
-            background: 'radial-gradient(circle at 50% 50%, var(--lavender-300) 0%, var(--lavender-500) 40%, transparent 70%)',
-            filter: 'blur(60px)',
-            opacity: 0.4,
+            top: '-5%',
+            left: '-15%',
+            right: '-15%',
+            bottom: '-5%',
+            background: 'linear-gradient(135deg, var(--lavender-300), var(--lavender-500))',
+            WebkitMaskImage: 'url(/brush_mask.png)',
+            WebkitMaskSize: 'contain',
+            WebkitMaskRepeat: 'no-repeat',
+            WebkitMaskPosition: 'center',
+            maskImage: 'url(/brush_mask.png)',
+            maskSize: 'contain',
+            maskRepeat: 'no-repeat',
+            maskPosition: 'center',
             zIndex: 0,
-            transform: 'scale(1.2)',
+            transform: 'rotate(-5deg) scale(1.1)',
           }} />
 
           {/* Photo container */}
@@ -176,7 +182,7 @@ export default function Hero() {
             zIndex: 1,
           }}>
             <img
-              src="/ajmal.png"
+              src="/ajmal_transparent.png"
               alt="Muhammed Ajmal P — ML Engineer & Full-Stack Developer"
               style={{
                 width: '100%',
@@ -184,9 +190,8 @@ export default function Hero() {
                 objectFit: 'cover',
                 objectPosition: 'center top',
                 display: 'block',
-                mixBlendMode: 'darken',
-                WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 98%)',
-                maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 98%)',
+                WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 98%)',
+                maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 98%)',
               }}
             />
           </div>
@@ -204,7 +209,7 @@ export default function Hero() {
           {[
             { num: '5+', label: 'Projects Shipped' },
             { num: '1',  label: 'Special Mention Award' },
-            { num: '2',  label: 'Hackathons' },
+            { num: '3',  label: 'Hackathons' },
             { num: '2027', label: 'Graduating' },
           ].map((stat, i, arr) => (
             <div key={stat.label} style={{

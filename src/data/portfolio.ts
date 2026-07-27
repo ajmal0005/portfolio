@@ -162,8 +162,8 @@ export const timeline = [
   {
     year: '2025',
     title: 'Hackathon Circuit',
-    org: '.hack\'25 · Vibathon\'25',
-    desc: 'Competed in 2 hackathons — .hack\'25 and Vibathon\'25 — building real systems under pressure.',
+    org: '.hack\'25 · Vibathon\'25 · SSF Sahithyolsav',
+    desc: 'Competed in 3 hackathons — .hack\'25, Vibathon\'25, and SSF Kerala Sahithyolsav Mini Hackathon — building real systems under pressure.',
     type: 'achievement',
   },
   {
