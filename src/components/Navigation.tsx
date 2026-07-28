@@ -66,17 +66,15 @@ export default function Navigation() {
               gap: '0.5rem',
             }}
           >
-            <span style={{
-              width: 28,
-              height: 28,
-              background: 'linear-gradient(135deg, var(--lavender-500), var(--lavender-300))',
-              borderRadius: 8,
-              display: 'grid',
-              placeItems: 'center',
-              fontSize: '0.7rem',
-              color: '#fff',
-              fontWeight: 800,
-            }}>MA</span>
+            <img
+              src="/logo.png"
+              alt="Logo"
+              style={{
+                height: 32,
+                width: 'auto',
+                mixBlendMode: 'multiply',
+              }}
+            />
             {personal.nameShort}
           </a>
 

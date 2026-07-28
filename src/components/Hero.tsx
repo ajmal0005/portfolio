@@ -159,8 +159,8 @@ export default function Hero() {
           <div style={{
             position: 'absolute',
             top: '-5%',
-            left: '-15%',
-            right: '-15%',
+            left: '-25%',
+            right: '-25%',
             bottom: '-5%',
             background: 'linear-gradient(135deg, var(--lavender-300), var(--lavender-500))',
             WebkitMaskImage: 'url(/brush_mask.png)',
@@ -172,7 +172,7 @@ export default function Hero() {
             maskRepeat: 'no-repeat',
             maskPosition: 'center',
             zIndex: 0,
-            transform: 'rotate(-5deg) scale(1.1)',
+            transform: 'rotate(-5deg) scaleX(1.35) scaleY(1.1)',
           }} />
 
           {/* Photo container */}
