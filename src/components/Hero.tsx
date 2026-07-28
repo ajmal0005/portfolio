@@ -156,24 +156,23 @@ export default function Hero() {
           style={{ position: 'relative', flexShrink: 0, display: 'flex', justifyContent: 'center' }}
         >
           {/* Lavender brush stroke background */}
-          <div style={{
-            position: 'absolute',
-            top: '-15%',
-            left: '-15%',
-            right: '-15%',
-            bottom: '-15%',
-            background: 'linear-gradient(135deg, var(--lavender-300), var(--lavender-500))',
-            WebkitMaskImage: 'url(/brush_mask.png)',
-            WebkitMaskSize: 'contain',
-            WebkitMaskRepeat: 'no-repeat',
-            WebkitMaskPosition: 'center',
-            maskImage: 'url(/brush_mask.png)',
-            maskSize: 'contain',
-            maskRepeat: 'no-repeat',
-            maskPosition: 'center',
-            zIndex: 0,
-            transform: 'rotate(-5deg) scaleY(1.3)',
-          }} />
+          <img
+            src="/brush.png"
+            alt="Brush background"
+            style={{
+              position: 'absolute',
+              top: '-15%',
+              left: '-15%',
+              right: '-15%',
+              bottom: '-15%',
+              width: '130%',
+              height: '130%',
+              objectFit: 'contain',
+              zIndex: 0,
+              transform: 'rotate(-5deg) scaleY(1.3)',
+              pointerEvents: 'none',
+            }}
+          />
 
           {/* Photo container */}
           <div style={{
