@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { projects } from '../data/portfolio';
 
 const fadeUp = {
@@ -12,8 +12,36 @@ const fadeUp = {
 };
 
 function ProjectCard({ project, index }: { project: typeof projects[0]; index: number }) {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
+
+  // 3D Magnetic Hover Logic
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const mouseXSpring = useSpring(x, { stiffness: 300, damping: 30 });
+  const mouseYSpring = useSpring(y, { stiffness: 300, damping: 30 });
+
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ['7deg', '-7deg']);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ['-7deg', '7deg']);
+  const glareOpacity = useTransform(mouseYSpring, [-0.5, 0.5], [0, 0.3]);
+  const glareY = useTransform(mouseYSpring, [-0.5, 0.5], ['-100%', '100%']);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    x.set(mouseX / width - 0.5);
+    y.set(mouseY / height - 0.5);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
 
   return (
     <motion.div
@@ -22,22 +50,41 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
       variants={fadeUp as any}
       initial="hidden"
       animate={inView ? 'visible' : 'hidden'}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
       style={{
         background: 'var(--bg-surface)',
         border: '1px solid var(--border-subtle)',
         borderRadius: 'var(--radius-xl)',
         overflow: 'hidden',
         boxShadow: 'var(--shadow-sm)',
-        transition: 'box-shadow 0.35s, transform 0.35s cubic-bezier(0.34,1.56,0.64,1)',
+        transition: 'box-shadow 0.35s',
         cursor: 'default',
         display: 'flex',
         flexDirection: 'column',
+        transformPerspective: 1200,
+        rotateX,
+        rotateY,
+        position: 'relative',
       }}
       whileHover={{
         y: -6,
-        boxShadow: '0 16px 48px rgba(109,40,217,0.12), 0 4px 16px rgba(109,40,217,0.07)',
+        boxShadow: '0 25px 50px -12px rgba(109,40,217,0.25)',
       }}
     >
+      {/* Glare layer */}
+      <motion.div
+        style={{
+          position: 'absolute',
+          inset: '-20%',
+          zIndex: 10,
+          background: 'linear-gradient(105deg, transparent 20%, rgba(255,255,255,0.7) 25%, transparent 30%)',
+          opacity: glareOpacity,
+          y: glareY,
+          pointerEvents: 'none',
+        }}
+      />
+
       {/* Project header strip */}
       <div style={{
         background: project.colorLight,
