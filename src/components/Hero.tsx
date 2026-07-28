@@ -162,7 +162,7 @@ export default function Hero() {
             left: '-15%',
             right: '-15%',
             bottom: '-15%',
-            background: 'linear-gradient(135deg, var(--lavender-100), var(--lavender-300))',
+            background: 'linear-gradient(135deg, var(--lavender-300), var(--lavender-500))',
             WebkitMaskImage: 'url(/brush_mask.png)',
             WebkitMaskSize: 'contain',
             WebkitMaskRepeat: 'no-repeat',
