@@ -158,11 +158,11 @@ export default function Hero() {
           {/* Lavender brush stroke background */}
           <div style={{
             position: 'absolute',
-            top: '-5%',
-            left: '-25%',
-            right: '-25%',
-            bottom: '-5%',
-            background: 'linear-gradient(135deg, var(--lavender-300), var(--lavender-500))',
+            top: '-15%',
+            left: '-15%',
+            right: '-15%',
+            bottom: '-15%',
+            background: 'linear-gradient(135deg, var(--lavender-100), var(--lavender-300))',
             WebkitMaskImage: 'url(/brush_mask.png)',
             WebkitMaskSize: 'contain',
             WebkitMaskRepeat: 'no-repeat',
@@ -172,7 +172,7 @@ export default function Hero() {
             maskRepeat: 'no-repeat',
             maskPosition: 'center',
             zIndex: 0,
-            transform: 'rotate(-5deg) scaleX(1.35) scaleY(1.1)',
+            transform: 'rotate(-5deg) scaleY(1.3)',
           }} />
 
           {/* Photo container */}

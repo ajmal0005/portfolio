@@ -72,7 +72,6 @@ export default function Navigation() {
               style={{
                 height: 32,
                 width: 'auto',
-                mixBlendMode: 'multiply',
               }}
             />
             {personal.nameShort}
